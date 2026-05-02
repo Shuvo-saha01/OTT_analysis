@@ -7,3 +7,12 @@ The goal of this project is to compare 4 OTT platforms against each other to fin
 - Hulu
 - Disney Plus
 
+# Load Stage 1
+The goal of this stage is to load the data as it is from the csv to the sql server without any changes 
+
+### Architechture of the pipeline 
+- A full load pipeline
+- Pandas reads the data from the csv files 
+- Create an sql table if not exists 
+- truncate the created table for any existing data 
+- cleanly insert the new data into the table 
