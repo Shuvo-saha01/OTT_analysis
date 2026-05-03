@@ -23,7 +23,7 @@ def create_sql_table_and_truncate_table(ott_name: str):
         # creates a new table if not exists
         query = text(
                     f"""
-                        CREATE TABLE IF NOT EXISTS {ott_name}_titles(
+                        CREATE TABLE IF NOT EXISTS raw_{ott_name}_titles(
                         show_id VARCHAR(20) PRIMARY KEY NOT NULL,
                         type TEXT NOT NULL,
                         title TEXT NOT NULL,
@@ -45,13 +45,30 @@ def create_sql_table_and_truncate_table(ott_name: str):
         query = text(f"TRUNCATE TABLE {ott_name}_titles")
         conn.execute(query)
 
+# This funciton will insert the values to the sql table with pandas to sql operation
+def insert_values_to_table(df_name, ott_name):
+    with engine.begin() as conn:
+        df_name.to_sql(
+            con=conn,
+            name=f'raw_{ott_name}_titles',
+            if_exists='append',
+            index=False
+        )
+
 # creating different dataframes for all the OTT platform csv data 
 netflix_df = df_constructor_function("netflix_titles")
 amazon_prime_df = df_constructor_function("amazon_prime_titles")
 disney_plus_df = df_constructor_function("disney_plus_titles")
 hulu_df = df_constructor_function("hulu_titles")
 
+# creating the SQL table and truncating the table for the OTT platforms
 create_sql_table_and_truncate_table("hulu")
 create_sql_table_and_truncate_table("amazon_prime")
 create_sql_table_and_truncate_table("disney_plus")
 create_sql_table_and_truncate_table("netflix")
+
+# # Inserting the values from the respective dataframes to the sql table
+insert_values_to_table(netflix_df, 'netflix')
+insert_values_to_table(amazon_prime_df, 'amazon_prime')
+insert_values_to_table(disney_plus_df, 'disney_plus')
+insert_values_to_table(hulu_df, 'hulu')
