@@ -16,3 +16,8 @@ The goal of this stage is to load the data as it is from the csv to the sql serv
 - Create an sql table if not exists 
 - truncate the created table for any existing data 
 - cleanly insert the new data into the table 
+
+### Workflow function 
+- An orchestration function that aims to orchestrate the stage 1
+- uses constructor functions for easy maintainance
+- Runs on the same architechture as the pipelines 
