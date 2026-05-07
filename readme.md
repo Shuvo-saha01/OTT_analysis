@@ -23,12 +23,18 @@ The goal of this stage is to load the data as it is from the csv to the sql serv
 - An orchestration function that aims to orchestrate the stage 1
 - uses constructor functions for easy maintainance
 
+### Key points
+- Idempotent pipeline (does not create redundant data)
+- Clean code 
+- Optimized single pipeline
+- Full load pipeline
+
 # Stage 2 : applying transformations to the data
 The goal of this stage is to apply transformations to the data for further usage 
 
 ### Transformations
 - Transformed 'cast' column into an ARRAY for postgres
-- Transformed 'Listed_in' column into an ARRAY for postgres 
+- Transformed 'listed_in' column into an ARRAY for postgres 
 
 ### workflow architechture
 - retrieves data from SQL tables 
@@ -36,3 +42,9 @@ The goal of this stage is to apply transformations to the data for further usage
 - Apply transformation 2
 - make another table for the stage
 - Save the data into the table
+
+### key points 
+- Single pipeline
+- Idempotent pipeline
+- Clean code 
+- Full load pipeline
