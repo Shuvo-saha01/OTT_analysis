@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:alpine3.23
+    container_name: postgres_db
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: ott_database
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase
+
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      - postgres
+
+volumes:
+  pg_data:

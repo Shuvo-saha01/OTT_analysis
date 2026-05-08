@@ -27,7 +27,7 @@ The goal of this stage is to load the data as it is from the csv to the sql serv
 - Idempotent pipeline (does not create redundant data)
 - Clean code 
 - Optimized single pipeline
-- Full load pipeline
+- Full load pipeline 
 
 # Stage 2 : applying transformations to the data
 The goal of this stage is to apply transformations to the data for further usage 
