@@ -42,7 +42,7 @@ def create_sql_table_and_truncate_table(ott_name: str):
         conn.execute(query)
 
         # truncates the table 
-        query = text(f"TRUNCATE TABLE {ott_name}_titles")
+        query = text(f"TRUNCATE TABLE raw_{ott_name}_titles")
         conn.execute(query)
 
 # This funciton will insert the values to the sql table with pandas to sql operation
