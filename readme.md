@@ -48,3 +48,14 @@ The goal of this stage is to apply transformations to the data for further usage
 - Idempotent pipeline
 - Clean code 
 - Full load pipeline
+
+# Stage 3 : Data Analysis
+The goal of this stage is to analyze the prepared data under different criterias to find the ott platform which gives the most value for the money.
+
+### Key criterias
+- How many shows are present in each platform
+- What is the ratio of Web Series VS Movie for each platform 
+- What is the geological variation of shows in each platform
+- What is the release year variation of shows in each platform
+
+*NOTE: The report is added in the repository inside the report folder*

@@ -84,3 +84,5 @@ save_data_into_table('netflix', netflix_df)
 save_data_into_table('amazon_prime', amazon_df)
 save_data_into_table('disney_plus', disney_df)
 save_data_into_table('hulu', hulu_df)
+
+
