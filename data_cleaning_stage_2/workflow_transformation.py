@@ -61,6 +61,41 @@ def save_data_into_table(ott_name: str, df):
             }
         )
 
+# Function to create the master table
+def create_master_table():
+    with engine.begin() as conn:
+        query = text(f"""
+                        CREATE VIEW master_table as (
+                            SELECT 
+                                *,
+                                'netflix' as platform
+                            FROM netflix_titles
+
+                            UNION ALL
+
+                            SELECT 
+                                *,
+                                'disney_plus' as platform
+                            FROM disney_plus_titles
+
+                            UNION ALL
+
+                            SELECT 
+                                *,
+                                'amazon_prime' as platform
+                            FROM amazon_prime_titles
+
+                            UNION ALL
+
+                            SELECT 
+                                *,
+                                'hulu' as platform
+                            FROM hulu_titles
+
+                        )
+                    """)
+        conn.execute(query)
+
 # creating indivisual dataframes for each OTT platforms
 netflix_df = read_data_and_store('netflix')
 amazon_df = read_data_and_store('amazon_prime')
@@ -85,4 +120,5 @@ save_data_into_table('amazon_prime', amazon_df)
 save_data_into_table('disney_plus', disney_df)
 save_data_into_table('hulu', hulu_df)
 
-
+# create the master table 
+create_master_table()
