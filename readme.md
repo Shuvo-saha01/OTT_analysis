@@ -59,3 +59,5 @@ The goal of this stage is to analyze the prepared data under different criterias
 - What is the release year variation of shows in each platform
 
 ***NOTE: The report is added in the repository inside the report folder***
+
+<img width="1582" height="2000" alt="1" src="https://github.com/user-attachments/assets/573443c7-d599-4fa2-909a-f07392312459" />
